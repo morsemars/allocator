@@ -1,0 +1,38 @@
+<div class="form-container">
+    <table class="mdl-data-table mdl-js-data-table">
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">
+                    <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="toggleAll()">
+                        <i class="mdl-color-text--blue-700 material-icons mdl-js-ripple-effect" ng-if="isChecked()">check_circle</i>
+                        <i class="mdl-color-text--blue-700 material-icons mdl-js-ripple-effect" ng-if="isIndeterminate()">remove_circle_outline</i>
+                        <i class="mdl-color-text--grey-400 material-icons mdl-js-ripple-effect" ng-if="isEmpty()">check_circle</i>
+                    </button>
+                </th>
+                <th class="mdl-data-table__cell--non-numeric">First Name</th>
+                <th class="mdl-data-table__cell--non-numeric">Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="analyst in analysts">
+            <td class="mdl-data-table__cell--non-numeric">
+                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="toggle(analyst, assignedAnalysts)">
+                    <i class="material-icons mdl-js-ripple-effect" ng-class="{'mdl-color-text--blue-700': isSelected(analyst, assignedAnalysts)}">check_circle</i>
+                </button>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">{{ analyst.firstName }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ analyst.lastName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="save()">
+            Save
+        </button>
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="cancel()">
+            Cancel
+        </button>
+    </div>
+</div>

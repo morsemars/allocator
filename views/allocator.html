@@ -1,0 +1,102 @@
+<div class="container">  
+    <div class="mdl-grid">
+            <div class="button-container">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-shadow--2dp" ng-click="openFileExplorer()">
+                    Choose File
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-shadow--2dp" ng-click="generateReport()">
+                    Generate Report
+                </button>
+            </div>
+    </div>
+
+    <md-content>
+        <md-tabs md-selected="selectedIndex" md-dynamic-height md-border-bottom>
+            <md-tab ng-repeat="(sheet, task) in loadedExcel.tasks" label="{{ sheet }}">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <h5>Non-Priority List: {{ taskCount.tasks[sheet] }}</h5>
+                        <table class="mdl-data-table mdl-js-data-table">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">CUST_ID</th>
+                                    <th class="mdl-data-table__cell--non-numeric">NAME</th>
+                                    <th>TOTAL</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="task in loadedExcel.tasks[sheet]">
+                                    <td class="mdl-data-table__cell--non-numeric">{{task.CUST_ID}}</td>
+                                    <td class="mdl-data-table__cell--non-numeric">{{task.NAME}}</td>
+                                    <td>{{task.TOTAL}}</td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="addToPriority()">
+                                            <i class="material-icons mdl-js-ripple-effect mdl-color-text--blue-700">keyboard_arrow_right</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mdl-cell mdl-cell--5-col">
+                        <h5>Priority List: {{ taskCount.priority[sheet] }}</h5>
+                        <table class="mdl-data-table mdl-js-data-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="mdl-data-table__cell--non-numeric">CUST_ID</th>
+                                    <th class="mdl-data-table__cell--non-numeric">NAME</th>
+                                    <th>TOTAL</th>
+                                    <th>Assigned Analyst</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="task in priority.tasks[sheet]">
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="removeFromPriority()">
+                                            <i class="material-icons mdl-js-ripple-effect mdl-color-text--blue-700">keyboard_arrow_left</i>
+                                        </button>
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">{{task.CUST_ID}}</td>
+                                    <td class="mdl-data-table__cell--non-numeric">{{task.NAME}}</td>
+                                    <td>{{task.TOTAL}}</td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <p ng-repeat="analyst in task.analysts">
+                                            {{ analyst.lastName }}, {{ analyst.firstName }}
+                                        </p>
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <button class="mdl-button mdl-js-button mdl-button--icon " ng-click="addAssignee($event)">
+                                            <i class="material-icons mdl-js-ripple-effect mdl-color-text--blue-700">person_add</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <h5>Distribution Count: {{assignedTotal}} / {{ taskCount.total }}</h5>
+                        <table class="mdl-data-table mdl-js-data-table">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">Name</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Assignment Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="analyst in analysts.registered">
+                                    <td class="mdl-data-table__cell--non-numeric">{{ analyst.lastName }}, {{ analyst.firstName }}</td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <input type="number" class="form-control" ng-model="analyst.assignmentCount"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </md-tab>
+        </md-tabs>                      
+    </md-content>
+</div>

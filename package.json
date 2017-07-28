@@ -1,0 +1,28 @@
+{
+  "name": "one-key-allocator",
+  "version": "2.0.0",
+  "description": "QMS Allocation Tool",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MMadriagaJr@ph.imshealth.com",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  },
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-animate": "1.5.8",
+    "angular-aria": "1.5.8",
+    "angular-material": "*",
+    "angular-ui-router": "*",
+    "camo": "^0.12.3",
+    "exceljs": "^0.5.0",
+    "material-design-lite": "*",
+    "nedb": "^1.8.0",
+    "nodemailer": "^3.1.4",
+    "nodemailer-smtp-transport": "^2.7.2",
+    "xlsx": "^0.10.8"
+  }
+}

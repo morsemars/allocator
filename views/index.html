@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Allocator</title>
+
+	<!-- Angular -->
+	<script src="../js/public/app.js"></script>
+
+	<!-- Controllers -->
+	<script src="../js/public/controllers/main-controller.js"></script>
+	<script src="../js/public/controllers/allocator-controller.js"></script>
+	<script src="../js/public/controllers/user-maintenance-controller.js"></script>
+
+	<!-- Services -->
+	<script src="../js/public/services/analyst-service.js"></script>
+	<script src="../js/public/services/util-service.js"></script>
+	<script src="../js/public/services/excel-service.js"></script>
+	<script src="../js/public/services/add-assignee-service.js"></script>
+
+	<!-- Styling -->
+    <link rel="stylesheet" href="../css/material.min.css">
+    <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css">
+	<link rel="stylesheet" href="../css/style.css">
+
+	<script src="../node_modules/material-design-lite/material.min.js"></script>
+
+  </head>
+  <body ng-app="qmsAllocatorApp" ng-controller="MainCtrl">
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<h5></h5>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</header>
+		<div class="mdl-layout__drawer sidemenu">
+			<h5 style="padding-left: 15px;">Allocator</h5>
+			<nav class="mdl-navigation">
+				<ul>
+					<li>
+						<a class="mdl-navigation__link divider" ng-click="toggleList()">Tools</a>
+						<ul>
+							<li>
+								<a class="mdl-navigation__link" ng-class="{'active': isActive[0]}" ui-sref="allocator">
+									<i class="material-icons">recent_actors</i>
+									Allocator
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="mdl-navigation__link divider" ng-click="toggleList()">FTE and Client</a>
+						<ul>
+							<li>
+								<a class="mdl-navigation__link" ng-class="{'active': isActive[1]}" ui-sref="user-maintenance">
+									<i class="material-icons">people</i>
+									FTE Maintenance
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<main class="mdl-layout__content">
+
+			<div class="page-content">
+				<div>
+
+					<div ui-view id="ui-view"></div>
+	
+				</div>
+			</div>
+
+		</main>
+	</div>
+  </body>
+</html>

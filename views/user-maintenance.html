@@ -1,0 +1,56 @@
+<div class="mdl-grid">
+  <div class="form-container mdl-cell mdl-cell--4-col mdl-shadow--2dp">
+
+    <md-input-container>
+        <label>First Name</label>
+        <input ng-model="currentAnalyst.firstName">
+    </md-input-container>
+
+    <md-input-container>
+        <label>Last Name</label>
+        <input ng-model="currentAnalyst.lastName">
+    </md-input-container>
+
+    <md-input-container>
+        <label>E-Mail</label>
+        <input ng-model="currentAnalyst.email">
+    </md-input-container>
+
+    <div class="button-container">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="save()">
+            Save
+        </button>
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="cancel()">
+            cancel
+        </button>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--8-col">
+      <table class="userTable mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">First Name</th>
+                <th class="mdl-data-table__cell--non-numeric">Last Name</th>
+                <th class="mdl-data-table__cell--non-numeric">Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="analyst in analysts.registered">
+            <td class="mdl-data-table__cell--non-numeric">{{ analyst.firstName }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ analyst.lastName }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ analyst.email }}</td>
+            <td>
+                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="edit()">
+                    <i class="mdl-color-text--blue-700 material-icons mdl-js-ripple-effect">create</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="deleteAnalyst()">
+                    <i class="mdl-color-text--blue-700 material-icons mdl-js-ripple-effect">clear</i>
+                </button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
